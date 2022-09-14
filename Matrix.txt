@@ -1,0 +1,50 @@
+package com.company;
+//import java.util.Random;
+
+public class Matrix {
+    int row, column;
+    int [][] initialMatrix;
+
+    public Matrix(int row, int column){
+        this.row = row;
+        this.column = column;
+        this.initialMatrix = new int[row][column];
+        }
+        public static Matrix SumMatrix(Matrix A, Matrix B){
+            Matrix Sum = new Matrix(A.row, B.column);
+            for(int i = 0; i < A.row; i++){
+                for(int k = 0; k < B.column; k++){
+                    Sum.initialMatrix[i][k] = A.initialMatrix[i][k] + B.initialMatrix[i][k];
+                }
+            }
+            return  Sum;
+    }
+    public static Matrix MultiplicationMatrix(Matrix A, Matrix B){
+        Matrix Multiplication = new Matrix(A.row, B.column);
+        for(int i = 0; i < A.row; i++){
+            for(int k = 0; k < B.column; k++){
+                for (int n = 0; n < A.column; n++){
+                    Multiplication.initialMatrix[i][k] = Multiplication.initialMatrix[i][k] + A.initialMatrix[i][n]* B.initialMatrix[n][k];
+                }
+            }
+        }
+        return Multiplication;
+    }
+    public  static  Matrix MultiplicationMatrixByNumber(Matrix A, int number){
+        Matrix summa = new Matrix(A.row, A.column);
+        for (int i = 0; i < A.row; i++){
+            for (int k = 0; k < A.column; k++){
+                summa.initialMatrix[i][k] = A.initialMatrix[i][k]*number;
+            }
+        }
+        return  summa;
+    }
+    public  void PrintMatrix(){
+        for (int i = 0; i < row; i++){
+            for(int k = 0; k < column; k++){
+                System.out.println("\t" + initialMatrix[i][k]);
+            }
+            System.out.println();
+        }
+    }
+}
